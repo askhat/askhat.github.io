@@ -1,0 +1,27 @@
+{
+  "name": "askhat.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Askhat Bikmetov <askhat@hey.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --public-url=https://askhat.github.io/",
+    "publish": "yarn build; yarn push-dir --dir dist --branch gh-pages --cleanup"
+  },
+  "devDependencies": {
+    "@types/node": "^14.6.3",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/styled-components": "^5.1.3",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "push-dir": "^0.4.1",
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
+    "react-is": ">= 16.8.0",
+    "styled-components": "^5.1.1"
+  }
+}
