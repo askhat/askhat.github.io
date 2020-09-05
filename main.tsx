@@ -1,33 +1,38 @@
+import React, { useState } from "react";
 import { render } from "react-dom";
-import React from "react";
-import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
+import { CRT, Typer } from "./components";
 
-const Wrapper = styled.div`
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-`
-
-const Image = styled.img`
-	margin: 0 auto;
-	width: 640px;
-	height: 480px;
-	object-fit: contain;
-`;
-
-const Caption = styled.p`
-	text-align: center;
-	font-size: 36px;
+const Style = createGlobalStyle`
+	html, body, #root {
+		height: 100%;
+	}
+  body {
+		margin: unset;
+    color: white;
+    font-family: "Press Start 2P", cursive;
+  }
 `;
 
 function App() {
+	let [loginFinished, setLoginFinished] = useState(false);
+	let [passowrdFinished, setPasswordFinished] = useState(false);
+
 	return (
-		<Wrapper>
-			<Image src={require("~/assets/wip.png")} />
-			<Caption>WIP</Caption>
-		</Wrapper>
+		<>
+			<CRT>
+				<p>
+					login: <Typer text="guest" onDone={() => setLoginFinished(true)} />
+				</p>
+				{loginFinished && (
+					<p>
+						password: <Typer text="*****" onDone={() => setPasswordFinished(true)} />
+					</p>
+				)}
+				{passowrdFinished && <p>Welcome! My name is Askhat. I'm a web developer.</p>}
+			</CRT>
+			<Style />
+		</>
 	);
 }
 
